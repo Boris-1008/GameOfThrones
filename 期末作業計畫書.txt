@@ -1,0 +1,548 @@
+你現在是我的前端開發代理，請幫我從零開始建立一個 React 期末專題網站。
+
+====================
+一、專案定位
+====================
+
+專案名稱：
+Game of Thrones Universe Guide
+
+中文名稱：
+《權力遊戲》互動式世界觀導覽網站
+
+專案目標：
+這不是一個完整劇情解說網站，而是一個幫助觀眾快速理解《權力遊戲》世界觀的 React 網站。
+重點放在：
+1. 人物
+2. 家族
+3. 地區 / 地圖
+4. 主要勢力與基本關係
+
+請不要把整個八季劇情完整重述。
+本網站的核心任務是：
+讓使用者透過互動介面，快速認識《權力遊戲》的重要角色、家族與主要地區。
+
+====================
+二、技術要求
+====================
+
+請使用：
+- React
+- React Router
+- 純前端即可，不需要真正後端
+- 資料先用本地 JSON 或 JS 陣列管理
+- 樣式可用 CSS Modules、普通 CSS、或 styled-components，但請統一
+- 不必接資料庫
+- 不必做登入
+- 不必做管理後台
+
+請優先考慮：
+- 好看
+- 容易 demo
+- 結構清楚
+- 元件化
+- 容易擴充
+
+如果你需要 UI 套件，可以使用：
+- MUI 或簡單 CSS
+但不要讓套件依賴太重，避免部署失敗。
+
+====================
+三、網站核心概念
+====================
+
+這個網站的主題不是「完整劇情回顧」，
+而是「世界觀導覽」。
+
+請把網站設計成讓使用者可以從這幾個角度理解作品：
+- 某個角色是誰
+- 某個角色屬於哪個家族
+- 某個家族主要在哪個地區
+- 某個地區有哪些代表角色或勢力
+- 不同人物 / 家族之間有什麼基本關係
+
+劇情只作為補充資訊，不是主軸。
+
+====================
+四、資料範圍限制
+====================
+
+不要嘗試做完整全角色資料庫。
+請先只做一個「期末可完成版」。
+
+請先使用以下範圍：
+
+A. 家族，至少 5 個
+1. Stark
+2. Lannister
+3. Targaryen
+4. Baratheon
+5. Night’s Watch
+
+B. 角色，至少 10 個
+1. Jon Snow
+2. Arya Stark
+3. Sansa Stark
+4. Bran Stark
+5. Ned Stark
+6. Daenerys Targaryen
+7. Tyrion Lannister
+8. Cersei Lannister
+9. Jaime Lannister
+10. The Night King
+
+C. 地區，至少 6 個
+1. Winterfell
+2. King’s Landing
+3. The Wall
+4. Dragonstone
+5. Braavos
+6. Beyond the Wall
+
+D. 基本關係
+請只做簡單關係即可，例如：
+- 所屬家族
+- 所屬地區 / 主要活動區域
+- 盟友 / 敵對
+- 稱號 / 身分
+
+不要做太複雜的全圖譜演算法。
+
+====================
+五、頁面規劃
+====================
+
+請使用 React Router，至少完成以下頁面：
+
+1. Home 首頁
+2. Characters 人物頁
+3. Houses 家族頁
+4. Map / Regions 地圖與地區頁
+5. About 關於本站頁
+
+如果時間允許，可加：
+6. Relationship 關係頁
+
+====================
+六、每一頁的需求
+====================
+
+-----------------------------------
+1. Home 首頁
+-----------------------------------
+
+目標：
+讓使用者一進站就知道這是什麼網站。
+
+首頁至少要有：
+- 網站標題
+- 副標題
+- 網站簡介
+- 進入各區塊的導覽卡片或按鈕
+- 風格要有 GOT / 中世紀 / 黑金 / 史詩感
+
+首頁建議內容：
+- Hero section
+- 簡短說明：
+  「本網站幫助觀眾快速了解《權力遊戲》的角色、家族與地區世界觀」
+- 三個入口卡片：
+  - Explore Characters
+  - Explore Houses
+  - Explore Regions
+- 可放一張背景圖或深色主視覺
+
+-----------------------------------
+2. Characters 人物頁
+-----------------------------------
+
+目標：
+讓使用者可以瀏覽人物並查看詳細資訊。
+
+需求：
+- 人物卡片列表
+- 搜尋功能
+- 可以依家族篩選
+- 點卡片後顯示詳細資訊
+
+每個人物至少要有欄位：
+- id
+- name
+- title / role
+- house
+- region
+- image
+- shortDescription
+- status / faction
+- notableTraits 或 tags
+- relatedCharacters (簡單列名字即可)
+
+人物頁互動需求：
+- 上方搜尋框
+- 家族篩選下拉選單
+- 卡片列表
+- 點擊後可開 Modal、Drawer，或切到人物詳細頁
+- 至少要能看清楚人物資訊
+
+-----------------------------------
+3. Houses 家族頁
+-----------------------------------
+
+目標：
+讓使用者快速理解各家族基本資訊。
+
+需求：
+- 家族卡片列表
+- 點擊卡片看詳情
+
+每個家族至少要有欄位：
+- id
+- name
+- sigil / emblem image
+- motto
+- region
+- colorTheme
+- description
+- notableMembers
+
+家族頁要顯示：
+- 家族名稱
+- 家族格言
+- 勢力範圍
+- 家族簡介
+- 主要成員
+
+-----------------------------------
+4. Map / Regions 地圖與地區頁
+-----------------------------------
+
+目標：
+讓使用者從地區理解世界觀。
+
+注意：
+不要做太複雜的真地圖引擎。
+請先做「簡化互動地圖」版本。
+
+做法建議：
+- 放一張地圖背景圖
+- 在幾個固定位置放 marker / hotspot / icon button
+- 點擊不同地區後，右側或下方顯示地區詳情
+
+每個地區至少要有欄位：
+- id
+- name
+- image 或 map marker position
+- summary
+- dominantHouse
+- notableCharacters
+- climate / type
+- description
+
+互動需求：
+- 點 Winterfell 顯示北境資訊
+- 點 King’s Landing 顯示首都資訊
+- 點 The Wall 顯示守夜人資訊
+- 點 Dragonstone 顯示坦格利安相關資訊
+- 點 Braavos 顯示海外城市資訊
+- 點 Beyond the Wall 顯示異鬼相關資訊
+
+-----------------------------------
+5. About 關於本站頁
+-----------------------------------
+
+內容可包含：
+- 專案簡介
+- 為什麼選這個主題
+- 網站目的
+- 使用技術
+- 作者資訊
+
+這頁要方便期末報告時直接展示。
+
+-----------------------------------
+6. Relationship 頁（可選）
+-----------------------------------
+
+如果時間允許可做：
+- 人物關係簡易視覺化
+或
+- 點人物後看到「家族、敵對、盟友、關聯人物」
+
+但這頁不是必要。
+若會拖慢進度，可以先不做。
+
+====================
+七、元件拆分要求
+====================
+
+請把專案做成可維護的 React 元件結構。
+
+建議元件：
+- Navbar
+- Footer
+- HeroSection
+- SectionTitle
+- CharacterCard
+- CharacterDetailModal 或 CharacterDetailPanel
+- HouseCard
+- HouseDetailPanel
+- RegionMarker
+- RegionDetailPanel
+- SearchBar
+- FilterBar
+
+請避免把所有 JSX 都塞進 App.jsx。
+
+====================
+八、資料檔案設計
+====================
+
+請把資料獨立管理，不要硬寫死在單一元件內。
+
+建議建立：
+- src/data/characters.js
+- src/data/houses.js
+- src/data/regions.js
+
+資料格式請設計清楚、一致、容易擴充。
+
+範例結構：
+
+characters.js
+[
+  {
+    id: "jon-snow",
+    name: "Jon Snow",
+    title: "King in the North",
+    house: "Stark",
+    region: "The Wall",
+    image: "...",
+    shortDescription: "...",
+    faction: "...",
+    tags: ["Night’s Watch", "North", "Targaryen blood"],
+    relatedCharacters: ["Arya Stark", "Sansa Stark", "Daenerys Targaryen"]
+  }
+]
+
+houses.js
+[
+  {
+    id: "stark",
+    name: "House Stark",
+    motto: "Winter is Coming",
+    region: "Winterfell",
+    image: "...",
+    description: "...",
+    notableMembers: ["Ned Stark", "Arya Stark", "Sansa Stark", "Bran Stark", "Jon Snow"]
+  }
+]
+
+regions.js
+[
+  {
+    id: "winterfell",
+    name: "Winterfell",
+    marker: { top: "30%", left: "35%" },
+    image: "...",
+    dominantHouse: "Stark",
+    notableCharacters: ["Jon Snow", "Sansa Stark", "Arya Stark", "Bran Stark"],
+    summary: "...",
+    description: "..."
+  }
+]
+
+====================
+九、UI / 視覺風格要求
+====================
+
+整體風格請偏向：
+- 深色系
+- 史詩感
+- 中世紀奇幻
+- 高對比
+- 黑 / 深灰 / 金 / 暗紅 為主
+
+視覺要求：
+- 不要做得像一般學校作業表單網站
+- 要有主題感
+- 卡片、按鈕、區塊層次要清楚
+- 文字可讀性要高
+- 行動版也要可正常看
+
+請不要做得太花，重點是質感與資訊清楚。
+
+====================
+十、互動功能要求
+====================
+
+至少要有：
+
+1. Navbar 導航
+2. Router 切頁
+3. Characters 頁的搜尋
+4. Characters 頁的家族篩選
+5. 點角色顯示詳細資訊
+6. 點地圖標記顯示地區資訊
+7. 點家族卡片顯示家族詳情
+
+如果時間允許可加：
+- 收藏角色
+- 主題切換
+- 小型關係視覺化
+- 動畫切換效果
+
+====================
+十一、非必要但加分的功能
+====================
+
+如果不會拖慢進度，可以酌量加入：
+- 頁面進場動畫
+- 卡片 hover 效果
+- 視差背景
+- 角色收藏功能（只存在 localStorage）
+- 手機版優化
+- 角色詳細頁獨立路由
+
+但請記住：
+先完成核心功能，再做加分項。
+
+====================
+十二、檔案結構建議
+====================
+
+請用清楚的專案結構，例如：
+
+src/
+  components/
+    Navbar.jsx
+    Footer.jsx
+    CharacterCard.jsx
+    CharacterDetailModal.jsx
+    HouseCard.jsx
+    RegionMap.jsx
+    SearchBar.jsx
+    FilterBar.jsx
+  pages/
+    Home.jsx
+    Characters.jsx
+    Houses.jsx
+    Regions.jsx
+    About.jsx
+  data/
+    characters.js
+    houses.js
+    regions.js
+  assets/
+    ...
+  styles/
+    ...
+  App.jsx
+  main.jsx
+
+如果你選擇別的結構也可以，但請保持清楚。
+
+====================
+十三、實作策略
+====================
+
+請依照以下順序實作，不要一開始就做很複雜：
+
+Step 1:
+建立 React 專案與基本 router 架構
+
+Step 2:
+完成 Navbar、Footer、Home
+
+Step 3:
+完成 data 檔案與 Characters 頁
+
+Step 4:
+完成 Houses 頁
+
+Step 5:
+完成 Regions / Map 頁
+
+Step 6:
+完成 About 頁
+
+Step 7:
+整體樣式優化與響應式調整
+
+Step 8:
+清理程式碼、補註解、確認可部署
+
+====================
+十四、驗收標準
+====================
+
+請以這些作為完成標準：
+
+1. 網站可成功執行
+2. Router 正常運作
+3. 首頁可正常顯示
+4. 人物頁可搜尋、可篩選、可看詳情
+5. 家族頁可顯示各家族資訊
+6. 地圖頁可透過點擊不同地區顯示資訊
+7. UI 有 GOT 主題感
+8. 程式碼結構清楚
+9. 資料與元件分離
+10. 可直接作為期末專題 demo
+
+====================
+十五、交付內容
+====================
+
+請幫我完成：
+1. 完整 React 專案程式碼
+2. 清楚的專案結構
+3. 必要安裝套件
+4. README.md，內容包含：
+   - 專案名稱
+   - 專案簡介
+   - 使用技術
+   - 安裝方式
+   - 啟動方式
+   - 頁面介紹
+5. 若有使用外部圖片，請整理來源或改用可安全展示的圖片連結
+6. 確保 npm install 後可以正常 npm run dev 或 npm start
+
+====================
+十六、Codex 的工作方式要求
+====================
+
+請不要一次做過度誇張的大改動。
+請分階段完成，每個階段都要：
+1. 說明你要做什麼
+2. 列出會新增 / 修改哪些檔案
+3. 完成後簡述結果
+4. 遇到不確定之處時先提出合理預設，不要卡住
+
+如果你需要做設計決策，請優先遵守這些原則：
+- 先可用，再漂亮
+- 先完成主功能，再做動畫
+- 先固定資料，再談擴充
+- 先讓 demo 順，再增加複雜度
+
+====================
+十七、最終請先做的事情
+====================
+
+請先不要直接衝到底。
+先按下面順序開始：
+
+第一步：
+建立專案架構與 Router
+
+第二步：
+建立假資料檔案（characters, houses, regions）
+
+第三步：
+先完成 Home、Characters、Houses、Regions、About 五頁骨架
+
+第四步：
+再逐頁補功能與美化
+
+請先輸出：
+1. 你打算建立的檔案樹
+2. 需要安裝的套件
+3. 第一階段會做的內容
+4. 然後開始建立專案
